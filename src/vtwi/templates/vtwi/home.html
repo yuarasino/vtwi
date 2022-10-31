@@ -8,20 +8,26 @@
 {% block content %}
 <section class="py-4">
   <h2>YouTubeチャンネル</h2>
-  <div class="d-flex align-items-center mb-2">
+  <div class="mb-2">
     {% if user.channel_id %}
-    <span class="text-success me-3">設定済</span>
-    <img class="rounded-circle me-2" src="{{ user.youtube_icon_url }}" alt="" style="height: 2.5rem">
-    <span>{{ user.youtube_name }}</span>
+    <a class="d-flex align-items-center text-decoration-none" href="#id_vtwi_user_form" data-bs-toggle="collapse">
+      <span class="text-success me-3"><i class="bi bi-caret-right-fill"></i>設定済み</span>
+      <img class="rounded-circle me-2" src="{{ user.youtube_icon_url }}" alt="" style="height: 2.5rem">
+      <span class="text-body">{{ user.youtube_name }}</span>
+    </a>
     {% else %}
-    <span class="text-danger">未設定</span>
+    <div>
+      <span class="text-danger"><i class="bi bi-caret-down-fill"></i>まずYouTubeチャンネルを設定してください</span>
+    </div>
     {% endif %}
   </div>
-  <form method="post">
-    {% bootstrap_form_errors vtwi_user_form type='non_fields' %}
-    {% bootstrap_field vtwi_user_form.channel_id placeholder='例:&nbsp;UCxUnuWTQGLw5dO_dl0oqrrg' addon_before='https://www.youtube.com/channel/' %}
-    {% csrf_token %}
-    <button type="submit" class="btn btn-primary" name="form_type" value="vtwi_user">保存</button>
-  </form>
+  <div class="collapse {% if not user.channel_id %}show{% endif %}" id="id_vtwi_user_form">
+    <form method="post">
+      {% bootstrap_form_errors vtwi_user_form type='non_fields' %}
+      {% bootstrap_field vtwi_user_form.channel_id placeholder='例:&nbsp;UCxUnuWTQGLw5dO_dl0oqrrg' addon_before='https://www.youtube.com/channel/' %}
+      {% csrf_token %}
+      <button type="submit" class="btn btn-primary" name="form_type" value="vtwi_user">保存</button>
+    </form>
+  </div>
 </section>
 {% endblock %}
