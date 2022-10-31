@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_bootstrap5",
     "social_django",
     "vtwi",
 ]
@@ -138,3 +139,8 @@ SOCIAL_AUTH_TWITTER_SECRET = env.str("TWITTER_API_KEY_SECRET")
 # Twitter auth
 TWITTER_API_KEY = env.str("TWITTER_API_KEY")
 TWITTER_API_KEY_SECRET = env.str("TWITTER_API_KEY_SECRET")
+
+
+# YouTube auth
+
+YOUTUBE_API_KEY = env.str("YOUTUBE_API_KEY")

@@ -1,12 +1,12 @@
 from django.contrib.auth.views import LogoutView
 from django.urls import path
 
-from . import views
+from .views import home_view, index_view
 
 app_name = "vtwi"
 
 urlpatterns = [
-    path("", views.IndexView.as_view(), name="index"),
-    path("home/", views.HomeView.as_view(), name="home"),
+    path("", index_view, name="index"),
+    path("home/", home_view, name="home"),
     path("logout/", LogoutView.as_view(), name="logout"),
 ]

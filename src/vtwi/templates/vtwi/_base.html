@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+1&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" crossorigin>
     <link rel="stylesheet" href="{% static 'vtwi/style.css' %}">
   </head>
@@ -18,12 +18,12 @@
     <header class="navbar navbar-dark bg-primary">
       <div class="container">
         <h1 class="navbar-brand mb-0">
-          <span class="fw-bold">VTwi</span><span class="navbar-text fs-6 d-none d-md-inline">&nbsp;-&nbsp;VTuber向けTwitter連携サービス</span>
+          <span class="fw-bold">VTwi</span><span class="navbar-text text-white fs-6 d-none d-md-inline">&nbsp;-&nbsp;VTuber向けTwitter連携サービス</span>
         </h1>
         <div class="d-flex">
           {% if user.is_authenticated %}
-          <img class="rounded-circle me-2" src="{{ user.icon_url }}" alt="" style="height: 2.5rem">
-          <span class="navbar-text me-4">&#64;{{ user.screen_name }}</span>
+          <img class="rounded-circle me-2" src="{{ user.twitter_icon_url }}" alt="" style="height: 2.5rem">
+          <span class="navbar-text text-white me-4">&#64;{{ user.username }}</span>
           <a class="btn btn-light" href="{% url 'vtwi:logout' %}"><i class="bi bi-box-arrow-right"></i>&nbsp;ログアウト</a>
           {% else %}
           <a class="btn btn-light" href="{% url 'social:begin' 'twitter' %}"><i class="bi bi-twitter"></i>&nbsp;Twitter連携</a>
@@ -44,6 +44,6 @@
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" crossorigin></script>
   </body>
 </html>
