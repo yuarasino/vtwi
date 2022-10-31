@@ -1,0 +1,12 @@
+{% extends "vtwi/_base.html" %}
+
+{% block title %}
+<title>VTwi - VTuber向けTwitter連携サービス</title>
+{% endblock %}
+
+{% block content %}
+<div>
+  <h1>インデックス</h1>
+  <a href="{% url 'social:begin' 'twitter' %}">Twitter連携</a>
+</div>
+{% endblock %}

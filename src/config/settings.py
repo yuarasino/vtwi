@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "social_django",
+    "vtwi",
 ]
 
 MIDDLEWARE = [
@@ -55,6 +57,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "social_django.context_processors.backends",
+                "social_django.context_processors.login_redirect",
             ],
         },
     },
@@ -111,3 +115,26 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Auth settings
+
+AUTH_USER_MODEL = "vtwi.VtwiUser"
+
+AUTHENTICATION_BACKENDS = [
+    "social_core.backends.twitter.TwitterOAuth",
+    "django.contrib.auth.backends.ModelBackend",
+]
+
+LOGIN_URL = "vtwi:index"
+LOGIN_REDIRECT_URL = "vtwi:home"
+LOGOUT_URL = "vtwi:logout"
+LOGOUT_REDIRECT_URL = "vtwi:index"
+
+SOCIAL_AUTH_TWITTER_KEY = env.str("TWITTER_API_KEY")
+SOCIAL_AUTH_TWITTER_SECRET = env.str("TWITTER_API_KEY_SECRET")
+
+
+# Twitter auth
+TWITTER_API_KEY = env.str("TWITTER_API_KEY")
+TWITTER_API_KEY_SECRET = env.str("TWITTER_API_KEY_SECRET")
